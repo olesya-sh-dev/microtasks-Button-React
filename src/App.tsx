@@ -1,33 +1,44 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, useState } from "react";
 import "./App.css";
 import { Button } from "./components/Button";
 
 function App() {
-  const myFirstSubscriber = () => {
-    console.log("Hello! I am Vasya");
+  // const myFirstSubscriber = () => {
+  //   console.log("Hello! I am Vasya");
+  // };
+
+  // const myNewSubscriber = (name: string) => console.log("Hello! I am " + name);
+
+  // const foo1 = () => {
+  //   console.log("100200");
+  // };
+
+  // const foo2 = (number: number) => console.log(number);
+
+  // const Button1 = (name: string, age: number) => {
+  //   console.log(name, age);
+  // };
+  // const Button2 = (name: string) => {
+  //   console.log(name);
+  // };
+
+  // const Button3 = () => {
+  //   console.log("I am stupid button");
+  // };
+  let [a, setA] = useState(1);
+  const onClickHandler = () => {
+    setA(++a);
+    console.log(a);
   };
 
-  const myNewSubscriber = (name: string) => console.log("Hello! I am " + name);
-
-  const foo1 = () => {
-    console.log("100200");
+  const onClickHandler0 = () => {
+    setA((a = 0));
+    console.log(a);
   };
 
-  const foo2 = (number: number) => console.log(number);
-
-  const Button1 = (name: string, age: number) => {
-    console.log(name, age);
-  };
-  const Button2 = (name: string) => {
-    console.log(name);
-  };
-
-  const Button3 = () => {
-    console.log("I am stupid button");
-  };
   return (
     <div className="App">
-      <button
+      {/* <button
         onClick={(event) => {
           console.log("Hello");
         }}
@@ -50,7 +61,11 @@ function App() {
 
       <Button name="Channel1" callBack={() => Button1("Ivan", 21)} />
       <Button name="Channel2" callBack={() => Button2("Sasha")} />
-      <Button name="Stupid Button" callBack={Button3} />
+      <Button name="Stupid Button" callBack={Button3} /> */}
+      <h1>{a}</h1>
+      <button onClick={onClickHandler}>number</button>
+
+      <button onClick={onClickHandler0}>0</button>
     </div>
   );
 }
