@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import "./App.css";
+import { NewComponent } from "./components/NewComponent";
 
-type FilterType = "all" | "dollar" | "ruble";
-
+export type FilterType = "all" | "dollar" | "ruble";
+export type MoneyType = {
+  banknote: "dollar" | "ruble";
+  nominal: number;
+  number: string;
+};
 function App() {
-  const [money, setMoney] = useState([
+  const [money, setMoney] = useState<MoneyType[]>([
     { banknote: "dollar", nominal: 100, number: "a123456789" },
     { banknote: "dollar", nominal: 50, number: "b123456789" },
     { banknote: "ruble", nominal: 100, number: "c123456789" },
@@ -35,7 +40,11 @@ function App() {
 
   return (
     <div className="App">
-      <ul>
+      <NewComponent
+        currentMoney={currentMoney}
+        callBack={OnClickFilterHandler}
+      />
+      {/* <ul>
         {currentMoney.map((objFromMoneyArr, index) => {
           return (
             <li key={index}>
@@ -50,7 +59,7 @@ function App() {
         <button onClick={() => OnClickFilterHandler("all")}>all</button>
         <button onClick={() => OnClickFilterHandler("dollar")}>dollars</button>
         <button onClick={() => OnClickFilterHandler("ruble")}>rubles</button>
-      </div>
+      </div> */}
     </div>
   );
 }
